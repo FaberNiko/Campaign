@@ -1,6 +1,6 @@
 import { use, useState } from "react";
 import { CampaignForm } from "./components/CampaignForm";
-import "./App.css";
+import './styles/App.scss'
 import { CampaignList } from "./components/CampaignList";
 
 function App() {
@@ -14,10 +14,7 @@ function App() {
 
 	return (
 		<div className="content">
-			<h1>Add campaign</h1>
-			<p>Fund: {fund.toFixed(2)} E</p>
 			<CampaignForm onAdd={handleAddCampaign} />
-
 			<CampaignList campaigns={campaigns} />
 		</div>
 	);

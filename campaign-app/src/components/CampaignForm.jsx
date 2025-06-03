@@ -37,60 +37,66 @@ export const CampaignForm = ({ onAdd }) => {
 		setRadius("");
 	};
 	return (
-		<form onSubmit={handleSubmit}>
-			<label>Campaign name</label>
-			<input
-				type="text"
-				value={name}
-				onChange={e => setName(e.target.value)}
-				required
-			/>
+		<>
+            <h1>Add campaign</h1>
+			<form onSubmit={handleSubmit}>
+				<label>Campaign name</label>
+				<input
+					type="text"
+					value={name}
+					onChange={e => setName(e.target.value)}
+					required
+				/>
 
-			<KeywordSelect selected={keywords} setSelected={setKeywords} />
+				<KeywordSelect selected={keywords} setSelected={setKeywords} />
 
-			<label>Bid amount</label>
-			<input
-				type="number"
-				min="0.1"
-                step="any"
-				value={bid}
-				onChange={e => setBid(e.target.value)}
-				required
-			/>
+				<label>Bid amount</label>
+				<input
+					type="number"
+					min="0.1"
+					step="any"
+					value={bid}
+					onChange={e => setBid(e.target.value)}
+					required
+				/>
 
-			<label>Campaign fund</label>
-			<input
-				type="number"
-				value={fund}
-				onChange={e => setFund(e.target.value)}
-				required
-			/>
+				<label>Campaign fund</label>
+				<input
+					type="number"
+					value={fund}
+					onChange={e => setFund(e.target.value)}
+					required
+				/>
 
-			<label>Status</label>
-			<select value={status} onChange={e => setStatus(e.target.value)} required>
-				<option value="on">Enabled</option>
-				<option value="off">Disabled</option>
-			</select>
+				<label>Status</label>
+				<select
+					value={status}
+					onChange={e => setStatus(e.target.value)}
+					required>
+					<option value="on">Enabled</option>
+					<option value="off">Disabled</option>
+				</select>
 
-			<label>City</label>
-			<select value={city} onChange={e => setCity(e.target.value)}>
-				<option>Krakow</option>
-				<option>Warsaw</option>
-				<option>Wroclaw</option>
-				<option>Gdansk</option>
-				<option>Katowice</option>
-			</select>
+				<label>City</label>
+				<select value={city} onChange={e => setCity(e.target.value)}>
+					<option>Krakow</option>
+					<option>Warsaw</option>
+					<option>Wroclaw</option>
+					<option>Gdansk</option>
+					<option>Katowice</option>
+				</select>
 
-			<label>Radius (km)</label>
-			<input
-				type="number"
-				min={0}
-				value={radius}
-				onChange={e => setRadius(e.target.value)}
-				required
-			/>
+				<label>Radius (km)</label>
+				<input
+					type="number"
+					min={0}
+					value={radius}
+					onChange={e => setRadius(e.target.value)}
+					required
+				/>
 
-			<button type="submit">Add campaign</button>
-		</form>
+				<button type="submit">Add campaign</button>
+			</form>
+		</>
 	);
 };
