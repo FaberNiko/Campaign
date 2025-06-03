@@ -43,7 +43,7 @@ export const CampaignForm = ({onAdd}) => {
         </select>
 
         <label>Radius (km)</label>
-        <input type='number'/>
+        <input type='number' min={0} required/>
 
         <button type='submit'>Add campaign</button>
     </form>
