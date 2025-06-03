@@ -1,51 +1,95 @@
-import React, { useState } from 'react'
-import { KeywordSelect } from './KeywordSelect'
-import '../styles/CampaignForm.scss'
+import React, { useState } from "react";
+import { KeywordSelect } from "./KeywordSelect";
+import "../styles/CampaignForm.scss";
 
-export const CampaignForm = ({onAdd}) => {
-    const [keywords, setKeywords] = useState([]);
+export const CampaignForm = ({ onAdd }) => {
+	const [keywords, setKeywords] = useState([]);
+	const [bid, setBid] = useState("");
+	const [fund, setFund] = useState("");
+	const [status, setStatus] = useState("");
+	const [city, setCity] = useState("");
+	const [radius, setRadius] = useState("");
+	const [name, setName] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (keywords.length === 0) {
-            alert('Chose at least one keyword!')
-            return;
-        }
+	const handleSubmit = e => {
+		e.preventDefault();
+		if (keywords.length === 0) {
+			alert("Chose at least one keyword!");
+			return;
+		}
 
-        onAdd({keywords});
-    }
-  return (
-    <form onSubmit={handleSubmit}>
-        <label>Campaign name</label>
-        <input type="text" required/>
+		onAdd({
+			keywords,
+			name,
+			bid: parseFloat(bid),
+			fund: parseFloat(fund),
+			status,
+			city,
+			radius: parseInt(radius),
+		});
 
-        <KeywordSelect selected={keywords} setSelected={setKeywords}/>
+		setName("");
+		setKeywords([]);
+		setBid("");
+		setFund("");
+		setStatus("on");
+		setCity("Krakow");
+		setRadius("");
+	};
+	return (
+		<form onSubmit={handleSubmit}>
+			<label>Campaign name</label>
+			<input
+				type="text"
+				value={name}
+				onChange={e => setName(e.target.value)}
+				required
+			/>
 
-        <label>Bid amount</label>
-        <input type="number" min="0.1" required/>
-        
-        <label>Campaign fund</label>
-        <input type="number" required/>
+			<KeywordSelect selected={keywords} setSelected={setKeywords} />
 
-        <label>Status</label>
-        <select required>
-            <option value="on">Enabled</option>
-            <option value="off">Disabled</option>
-        </select>
+			<label>Bid amount</label>
+			<input
+				type="number"
+				min="0.1"
+				value={bid}
+				onChange={e => setBid(e.target.value)}
+				required
+			/>
 
-        <label>City</label>
-        <select>
-            <option>Krakow</option>
-            <option>Warsaw</option>
-            <option>Wroclaw</option>
-            <option>Gdansk</option>
-            <option>Katowice</option>
-        </select>
+			<label>Campaign fund</label>
+			<input
+				type="number"
+				value={fund}
+				onChange={e => setFund(e.target.value)}
+				required
+			/>
 
-        <label>Radius (km)</label>
-        <input type='number' min={0} required/>
+			<label>Status</label>
+			<select value={status} onChange={e => setStatus(e.target.value)} required>
+				<option value="on">Enabled</option>
+				<option value="off">Disabled</option>
+			</select>
 
-        <button type='submit'>Add campaign</button>
-    </form>
-  )
-}
+			<label>City</label>
+			<select value={city} onChange={e => setCity(e.target.value)}>
+				<option>Krakow</option>
+				<option>Warsaw</option>
+				<option>Wroclaw</option>
+				<option>Gdansk</option>
+				<option>Katowice</option>
+			</select>
+
+			<label>Radius (km)</label>
+			<input
+				type="number"
+				min={0}
+				value={radius}
+				onChange={e => setRadius(e.target.value)}
+				required
+			/>
+
+			<button type="submit">Add campaign</button>
+		</form>
+	);
+};

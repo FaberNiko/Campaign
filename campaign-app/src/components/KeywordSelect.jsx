@@ -25,7 +25,6 @@ export const KeywordSelect = ({ selected = [], setSelected }) => {
 				value={query}
 				onChange={e => setQuery(e.target.value)}
 				placeholder="e.g. jacket, dress, pants"
-				required
 			/>
             {query && filtered.length > 0 && (
                 <ul className="suggestions">
