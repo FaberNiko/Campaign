@@ -1,4 +1,5 @@
 import { use, useState } from 'react'
+import { CampaignForm } from './components/CampaignForm';
 import './App.css'
 
 function App() {
@@ -9,6 +10,8 @@ function App() {
     <div>
       <h1>Campaign panel</h1>
       <p>Campaign fund: {fund.toFixed(2)} E</p>
+
+      <CampaignForm></CampaignForm>
     </div>
   )
 }
