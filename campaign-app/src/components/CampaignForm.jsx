@@ -52,6 +52,7 @@ export const CampaignForm = ({ onAdd }) => {
 			<input
 				type="number"
 				min="0.1"
+                step="any"
 				value={bid}
 				onChange={e => setBid(e.target.value)}
 				required

@@ -1,0 +1,21 @@
+ul {
+	padding: 0;
+    display: flex;
+}
+
+li {
+    padding: 1rem;
+    margin: .4rem;
+	background-color: #fff;
+	color: #000;
+	list-style: none;
+	border-radius: 6px;
+	text-align: left;
+	text-transform: uppercase;
+
+    p {
+        font-size: 0.7rem;
+        color: #6d6c6c;
+        margin: 0.2rem;
+    }
+}

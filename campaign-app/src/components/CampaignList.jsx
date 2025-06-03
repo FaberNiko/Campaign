@@ -1,13 +1,14 @@
 import React from "react";
+import "../styles/CampaignList.scss";
 
-export const CampaignList = ({campaigns}) => {
+export const CampaignList = ({ campaigns }) => {
 	if (campaigns.length === 0) {
 		return (
-        <>
-            <h2>Campaign list:</h2>
-            <p>No campaigns</p>
-        </>
-    );
+			<>
+				<h2>Campaign list:</h2>
+				<p>No campaigns</p>
+			</>
+		);
 	}
 	return (
 		<div>
@@ -15,8 +16,12 @@ export const CampaignList = ({campaigns}) => {
 			<ul>
 				{campaigns.map((c, index) => (
 					<li key={index}>
-						<strong>{c.name}</strong> - keywords: {c.keywords.join(", ")}, bid:{" "}
-						{c.bid}, fund: {c.fund} E, radius: {c.radius} km, status: {c.status}
+						<h3>{c.name}</h3>
+						<p>keywords: {c.keywords.join(", ")}</p>
+						<p>bid: <strong>{c.bid}</strong></p>
+						<p>fund: {c.fund} E</p>
+						<p>radius: {c.radius} km</p>
+						<p>status: {c.status}</p>
 					</li>
 				))}
 			</ul>
