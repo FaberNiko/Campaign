@@ -5,6 +5,7 @@ export const CampaignList = ({ campaigns }) => {
 
 	return (
 		<div className="campaign-list">
+			<button>Add campaign</button>
 			<h2>Campaign list:</h2>
 			<table>
 				<thead>

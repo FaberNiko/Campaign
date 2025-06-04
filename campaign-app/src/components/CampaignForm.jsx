@@ -38,7 +38,6 @@ export const CampaignForm = ({ onAdd }) => {
 	};
 	return (
 		<>
-			<h1>Add campaign</h1>
 			<form onSubmit={handleSubmit}>
 				<label>Campaign name</label>
 				<input

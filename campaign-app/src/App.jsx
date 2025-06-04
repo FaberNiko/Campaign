@@ -14,6 +14,8 @@ function App() {
 
 	return (
 		<div className="content">
+			<h1>Campaign Panel</h1>
+			<p>Active fund: {fund.toFixed(2)}E</p>
 			<CampaignList campaigns={campaigns} />
 			<CampaignForm onAdd={handleAddCampaign} />
 		</div>
