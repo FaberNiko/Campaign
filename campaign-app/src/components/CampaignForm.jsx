@@ -32,13 +32,13 @@ export const CampaignForm = ({ onAdd }) => {
 		setKeywords([]);
 		setBid("");
 		setFund("");
-		setStatus("on");
-		setCity("Krakow");
+		setStatus("");
+		setCity("");
 		setRadius("");
 	};
 	return (
 		<>
-            <h1>Add campaign</h1>
+			<h1>Add campaign</h1>
 			<form onSubmit={handleSubmit}>
 				<label>Campaign name</label>
 				<input
@@ -73,12 +73,18 @@ export const CampaignForm = ({ onAdd }) => {
 					value={status}
 					onChange={e => setStatus(e.target.value)}
 					required>
+					<option value="" disabled hidden>
+						Select status...
+					</option>
 					<option value="on">Enabled</option>
 					<option value="off">Disabled</option>
 				</select>
 
 				<label>City</label>
 				<select value={city} onChange={e => setCity(e.target.value)}>
+					<option value="" disabled hidden>
+						Select city...
+					</option>
 					<option>Krakow</option>
 					<option>Warsaw</option>
 					<option>Wroclaw</option>

@@ -2,29 +2,40 @@ import React from "react";
 import "../styles/CampaignList.scss";
 
 export const CampaignList = ({ campaigns }) => {
-	if (campaigns.length === 0) {
-		return (
-			<>
-				<h2>Campaign list:</h2>
-				<p>No campaigns</p>
-			</>
-		);
-	}
+
 	return (
-		<div>
+		<div className="campaign-list">
 			<h2>Campaign list:</h2>
-			<ul>
-				{campaigns.map((c, index) => (
-					<li key={index}>
-						<h3>{c.name}</h3>
-						<p>keywords: {c.keywords.join(", ")}</p>
-						<p>bid: <strong>{c.bid}</strong></p>
-						<p>fund: {c.fund} E</p>
-						<p>radius: {c.radius} km</p>
-						<p>status: {c.status}</p>
-					</li>
-				))}
-			</ul>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Keywords</th>
+						<th>Bid</th>
+						<th>Fund</th>
+						<th>Radius (km)</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{campaigns.length === 0 ? (
+						<tr>
+							<td colSpan="6" style={{ textAlign: "center", padding: "1rem" }}>No active campaigns</td>
+						</tr>
+					) : (
+						campaigns.map((c, index) => (
+							<tr key={index}>
+								<td data-label="Name">{c.name}</td>
+								<td data-label="Keywords">{c.keywords.join(", ")}</td>
+								<td data-label="Bid">{c.bid}</td>
+								<td data-label="Fund">{c.fund} E</td>
+								<td data-label="Radius">{c.radius} km</td>
+								<td data-label="Status">{c.status}</td>
+							</tr>
+						))
+					)}
+				</tbody>
+			</table>
 		</div>
 	);
 };
