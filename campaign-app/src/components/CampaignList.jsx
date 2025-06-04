@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "../styles/CampaignList.scss";
 
 export const CampaignList = ({ campaigns, onOpenModal, activeFund }) => {
-
-
 	return (
 		<div className="campaign-list">
-			<button onClick={onOpenModal}>Add campaign</button>
+			<button className="openBtn" onClick={onOpenModal}>
+				Add campaign
+			</button>
 			<h2>Campaign list:</h2>
 			<table>
 				<thead>
@@ -14,15 +14,17 @@ export const CampaignList = ({ campaigns, onOpenModal, activeFund }) => {
 						<th>Name</th>
 						<th>Keywords</th>
 						<th>Bid</th>
-						<th>Fund</th>
 						<th>Radius (km)</th>
 						<th>Status</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					{campaigns.length === 0 ? (
 						<tr>
-							<td colSpan="6" style={{ textAlign: "center", padding: "1rem" }}>No active campaigns</td>
+							<td colSpan="6" style={{ textAlign: "center", padding: "1rem" }}>
+								No active campaigns
+							</td>
 						</tr>
 					) : (
 						campaigns.map((c, index) => (
@@ -32,6 +34,10 @@ export const CampaignList = ({ campaigns, onOpenModal, activeFund }) => {
 								<td data-label="Bid">{c.bid} E</td>
 								<td data-label="Radius">{c.radius} km</td>
 								<td data-label="Status">{c.status}</td>
+								<div className="buttonsBox">
+									<button className="editBtn">Edit</button>
+									<button className="deleteBtn">Delete</button>
+								</div>
 							</tr>
 						))
 					)}
