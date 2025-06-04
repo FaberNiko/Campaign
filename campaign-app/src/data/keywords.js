@@ -6,4 +6,8 @@ export const keywords = [
     'shoes',
     'pants',
     'jeans',
+    'coat',
+    'socks',
+    'gloves',
+    'hoodie',
 ]
