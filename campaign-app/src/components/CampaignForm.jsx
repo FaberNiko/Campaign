@@ -40,6 +40,9 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund }) => {
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
+				<div className="buttonBox">
+					<button className="closeBtn" onClick={onCloseModal}>X</button>
+				</div>
 				<label>Campaign name</label>
 				<input
 					type="text"
@@ -62,11 +65,7 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund }) => {
 				/>
 
 				<label>Campaign fund</label>
-				<input
-					type="number"
-					value={activeFund}
-					required
-				/>
+				<input type="number" value={activeFund} required />
 
 				<label>Status</label>
 				<select
