@@ -39,6 +39,8 @@
 		li {
             background: #a7a7a7;
             padding: 0.2rem;
+			border-radius: 6px;
+			text-align: center;
             transition: background .2s ease;
 			cursor: pointer;
 			&:hover {
