@@ -1,11 +1,15 @@
 import { use, useState } from "react";
 import { CampaignForm } from "./components/CampaignForm";
-import './styles/App.scss'
+import "./styles/App.scss";
 import { CampaignList } from "./components/CampaignList";
 
 function App() {
 	const [campaigns, setCampaigns] = useState([]);
 	const [fund, setFund] = useState(300.0);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const openModal = () => setIsModalOpen(true);
+	const closeModal = () => setIsModalOpen(false)
 
 	const handleAddCampaign = newCampaign => {
 		setCampaigns([...campaigns, newCampaign]);
@@ -16,8 +20,14 @@ function App() {
 		<div className="content">
 			<h1>Campaign Panel</h1>
 			<p>Active fund: {fund.toFixed(2)}E</p>
-			<CampaignList campaigns={campaigns} />
-			<CampaignForm onAdd={handleAddCampaign} />
+			<CampaignList campaigns={campaigns} onOpenModal={openModal} />
+			{isModalOpen && (
+				<div className="modal-backdrop">
+					<div className="modal">
+						<CampaignForm onAdd={handleAddCampaign} onCloseModal = {closeModal} />
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }

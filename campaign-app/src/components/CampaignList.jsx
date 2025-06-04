@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/CampaignList.scss";
 
-export const CampaignList = ({ campaigns }) => {
+export const CampaignList = ({ campaigns, onOpenModal }) => {
+
 
 	return (
 		<div className="campaign-list">
-			<button>Add campaign</button>
+			<button onClick={onOpenModal}>Add campaign</button>
 			<h2>Campaign list:</h2>
 			<table>
 				<thead>

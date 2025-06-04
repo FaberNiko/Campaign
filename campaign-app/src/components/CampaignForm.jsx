@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { KeywordSelect } from "./KeywordSelect";
 import "../styles/CampaignForm.scss";
 
-export const CampaignForm = ({ onAdd }) => {
+export const CampaignForm = ({ onAdd, onCloseModal }) => {
 	const [keywords, setKeywords] = useState([]);
 	const [bid, setBid] = useState("");
 	const [fund, setFund] = useState("");
@@ -35,6 +35,7 @@ export const CampaignForm = ({ onAdd }) => {
 		setStatus("");
 		setCity("");
 		setRadius("");
+		onCloseModal();
 	};
 	return (
 		<>

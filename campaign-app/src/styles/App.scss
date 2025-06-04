@@ -18,11 +18,29 @@ h1 {
 	color: #007bff;
 	font-weight: 800;
 	font-size: 2rem;
+	margin-bottom: 0.5rem;
 }
 
 .content {
 	margin: 0 auto;
 	text-align: center;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: transparent;
+  backdrop-filter: blur(3px);
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
 }
 
 
