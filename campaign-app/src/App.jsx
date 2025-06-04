@@ -14,8 +14,8 @@ function App() {
 
 	return (
 		<div className="content">
-			<CampaignForm onAdd={handleAddCampaign} />
 			<CampaignList campaigns={campaigns} />
+			<CampaignForm onAdd={handleAddCampaign} />
 		</div>
 	);
 }
