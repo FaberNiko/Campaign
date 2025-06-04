@@ -17,11 +17,15 @@ function App() {
 		console.log("Added campaign", newCampaign);
 	};
 
+	const handleDeleteCampaign = indexToDelete => {
+		setCampaigns(prev => prev.filter((_, index) => index !== indexToDelete))
+	}
+
 	return (
 		<div className="content">
 			<h1>Campaign Panel</h1>
 			<p>Active fund: {fund.toFixed(2)}E</p>
-			<CampaignList campaigns={campaigns} onOpenModal={openModal} activeFund = {fund}/>
+			<CampaignList campaigns={campaigns} onOpenModal={openModal} activeFund = {fund} onDelete = {handleDeleteCampaign}/>
 			{isModalOpen && (
 				<div className="modal-backdrop">
 					<div className="modal">

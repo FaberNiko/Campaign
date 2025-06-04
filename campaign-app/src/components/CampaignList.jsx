@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/CampaignList.scss";
 
-export const CampaignList = ({ campaigns, onOpenModal, activeFund }) => {
+export const CampaignList = ({ campaigns, onOpenModal, onDelete }) => {
 	return (
 		<div className="campaign-list">
 			<button className="openBtn" onClick={onOpenModal}>
@@ -36,7 +36,7 @@ export const CampaignList = ({ campaigns, onOpenModal, activeFund }) => {
 								<td data-label="Status">{c.status}</td>
 								<div className="buttonsBox">
 									<button className="editBtn">Edit</button>
-									<button className="deleteBtn">Delete</button>
+									<button className="deleteBtn" onClick={() => onDelete(index)}>Delete</button>
 								</div>
 							</tr>
 						))
