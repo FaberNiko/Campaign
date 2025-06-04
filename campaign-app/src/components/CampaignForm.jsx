@@ -42,6 +42,7 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund, editingCampaign 
 			radius: parseInt(radius),
 		});
 
+		onCloseModal();
 		setName("");
 		setKeywords([]);
 		setBid("");
@@ -49,7 +50,6 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund, editingCampaign 
 		setStatus("");
 		setCity("");
 		setRadius("");
-		onCloseModal();
 	};
 	return (
 		<>
@@ -113,8 +113,7 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund, editingCampaign 
 					onChange={e => setRadius(e.target.value)}
 					required
 				/>
-
-				<button type="submit">Add campaign</button>
+				<button type="submit">{editingCampaign ? "Save" : "Add campaign"}</button>
 			</form>
 		</>
 	);

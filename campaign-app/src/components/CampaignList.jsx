@@ -33,10 +33,18 @@ export const CampaignList = ({ campaigns, onOpenModal, onDelete, onEdit }) => {
 								<td data-label="Keywords">{c.keywords.join(", ")}</td>
 								<td data-label="Bid">{c.bid} E</td>
 								<td data-label="Radius">{c.radius} km</td>
-								<td data-label="Status">{c.status}</td>
+								<td
+									data-label="Status"
+									className={c.status === "on" ? "status-on" : "status-off"}>
+									{c.status}
+								</td>
 								<td className="buttonsBox">
-									<button className="editBtn" onClick={() => onEdit(index)}>Edit</button>
-									<button className="deleteBtn" onClick={() => onDelete(index)}>Delete</button>
+									<button className="editBtn" onClick={() => onEdit(index)}>
+										Edit
+									</button>
+									<button className="deleteBtn" onClick={() => onDelete(index)}>
+										Delete
+									</button>
 								</td>
 							</tr>
 						))

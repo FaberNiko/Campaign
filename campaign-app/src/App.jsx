@@ -1,17 +1,22 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { CampaignForm } from "./components/CampaignForm";
 import "./styles/App.scss";
 import { CampaignList } from "./components/CampaignList";
+import { initialFund } from "./data/data";
 
 function App() {
 	const [campaigns, setCampaigns] = useState([]);
-	const [fund, setFund] = useState(300.0);
+	const [fund, setFund] = useState(initialFund);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [editingIndex, setEditingIndex] = useState(null);
 	const [editingCampaign, setEditingCampaign] = useState(null);
 
 	const openModal = () => setIsModalOpen(true);
-	const closeModal = () => setIsModalOpen(false);
+	const closeModal = () => {
+		setIsModalOpen(false);
+		setEditingIndex(null);
+		setEditingCampaign(null)
+	}
 
 	const handleAddOrUpdateCampaign = campaign => {
 		if (editingIndex !== null) {

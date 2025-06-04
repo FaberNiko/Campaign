@@ -1,0 +1,1 @@
+export const initialFund = 1000.0;
