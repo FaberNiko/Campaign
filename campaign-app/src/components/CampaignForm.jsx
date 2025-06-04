@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { KeywordSelect } from "./KeywordSelect";
 import "../styles/CampaignForm.scss";
 
-export const CampaignForm = ({ onAdd, onCloseModal, activeFund }) => {
+export const CampaignForm = ({ onAdd, onCloseModal, activeFund, editingCampaign }) => {
 	const [keywords, setKeywords] = useState([]);
 	const [bid, setBid] = useState("");
 	const [fund, setFund] = useState("");
@@ -10,6 +10,20 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund }) => {
 	const [city, setCity] = useState("");
 	const [radius, setRadius] = useState("");
 	const [name, setName] = useState("");
+
+	const maxBid = editingCampaign ? editingCampaign.bid + activeFund : activeFund;
+
+	useEffect(() => {
+		if (editingCampaign) {
+			setKeywords(editingCampaign.keywords);
+			setBid(editingCampaign.bid);
+			setFund(editingCampaign.fund);
+			setStatus(editingCampaign.status);
+			setCity(editingCampaign.city);
+			setRadius(editingCampaign.radius);
+			setName(editingCampaign.name);
+		}
+	}, [editingCampaign]);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -57,7 +71,7 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund }) => {
 				<input
 					type="number"
 					min="0.1"
-					max={activeFund}
+					max={maxBid}
 					step="any"
 					value={bid}
 					onChange={e => setBid(e.target.value)}
@@ -65,7 +79,7 @@ export const CampaignForm = ({ onAdd, onCloseModal, activeFund }) => {
 				/>
 
 				<label>Campaign fund</label>
-				<input type="number" value={activeFund} required />
+				<input type="number" value={activeFund} required  readOnly/>
 
 				<label>Status</label>
 				<select

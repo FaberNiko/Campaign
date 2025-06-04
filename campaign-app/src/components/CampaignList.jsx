@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/CampaignList.scss";
 
-export const CampaignList = ({ campaigns, onOpenModal, onDelete }) => {
+export const CampaignList = ({ campaigns, onOpenModal, onDelete, onEdit }) => {
 	return (
 		<div className="campaign-list">
 			<button className="openBtn" onClick={onOpenModal}>
@@ -35,7 +35,7 @@ export const CampaignList = ({ campaigns, onOpenModal, onDelete }) => {
 								<td data-label="Radius">{c.radius} km</td>
 								<td data-label="Status">{c.status}</td>
 								<div className="buttonsBox">
-									<button className="editBtn">Edit</button>
+									<button className="editBtn" onClick={() => onEdit(index)}>Edit</button>
 									<button className="deleteBtn" onClick={() => onDelete(index)}>Delete</button>
 								</div>
 							</tr>

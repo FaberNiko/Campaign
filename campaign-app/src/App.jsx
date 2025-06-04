@@ -7,29 +7,57 @@ function App() {
 	const [campaigns, setCampaigns] = useState([]);
 	const [fund, setFund] = useState(300.0);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [editingIndex, setEditingIndex] = useState(null);
+	const [editingCampaign, setEditingCampaign] = useState(null);
 
 	const openModal = () => setIsModalOpen(true);
-	const closeModal = () => setIsModalOpen(false)
+	const closeModal = () => setIsModalOpen(false);
 
-	const handleAddCampaign = newCampaign => {
-		setCampaigns([...campaigns, newCampaign]);
-		setFund(prev => prev - newCampaign.bid)
-		console.log("Added campaign", newCampaign);
+	const handleAddOrUpdateCampaign = campaign => {
+		if (editingIndex !== null) {
+			const prev = campaigns[editingIndex]
+			const bidDiff = prev.bid - campaign.bid
+
+			const updated = [...campaigns];
+			updated[editingIndex] = campaign;
+			setCampaigns(updated);
+			setEditingIndex(null);
+			setEditingCampaign(null);
+			setFund(fund + bidDiff)
+		} else {
+			// Dodanie nowej
+			setCampaigns([...campaigns, campaign]);
+			setFund(fund - campaign.bid); 
+		}
 	};
-
 	const handleDeleteCampaign = indexToDelete => {
-		setCampaigns(prev => prev.filter((_, index) => index !== indexToDelete))
-	}
+		setCampaigns(prev => prev.filter((_, index) => index !== indexToDelete));
+	};
 
 	return (
 		<div className="content">
 			<h1>Campaign Panel</h1>
 			<p>Active fund: {fund.toFixed(2)}E</p>
-			<CampaignList campaigns={campaigns} onOpenModal={openModal} activeFund = {fund} onDelete = {handleDeleteCampaign}/>
+			<CampaignList
+				campaigns={campaigns}
+				onOpenModal={openModal}
+				activeFund={fund}
+				onDelete={handleDeleteCampaign}
+				onEdit={index => {
+					setEditingIndex(index);
+					setEditingCampaign(campaigns[index]);
+					openModal()
+				}}
+			/>
 			{isModalOpen && (
 				<div className="modal-backdrop">
 					<div className="modal">
-						<CampaignForm onAdd={handleAddCampaign} onCloseModal = {closeModal} activeFund = {fund}/>
+						<CampaignForm
+							onAdd={handleAddOrUpdateCampaign}
+							editingCampaign={editingCampaign}
+							onCloseModal={closeModal}
+							activeFund={fund}
+						/>
 					</div>
 				</div>
 			)}
