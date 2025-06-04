@@ -13,6 +13,7 @@ function App() {
 
 	const handleAddCampaign = newCampaign => {
 		setCampaigns([...campaigns, newCampaign]);
+		setFund(prev => prev - newCampaign.bid)
 		console.log("Added campaign", newCampaign);
 	};
 
@@ -20,11 +21,11 @@ function App() {
 		<div className="content">
 			<h1>Campaign Panel</h1>
 			<p>Active fund: {fund.toFixed(2)}E</p>
-			<CampaignList campaigns={campaigns} onOpenModal={openModal} />
+			<CampaignList campaigns={campaigns} onOpenModal={openModal} activeFund = {fund}/>
 			{isModalOpen && (
 				<div className="modal-backdrop">
 					<div className="modal">
-						<CampaignForm onAdd={handleAddCampaign} onCloseModal = {closeModal} />
+						<CampaignForm onAdd={handleAddCampaign} onCloseModal = {closeModal} activeFund = {fund}/>
 					</div>
 				</div>
 			)}

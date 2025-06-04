@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/CampaignList.scss";
 
-export const CampaignList = ({ campaigns, onOpenModal }) => {
+export const CampaignList = ({ campaigns, onOpenModal, activeFund }) => {
 
 
 	return (
@@ -29,8 +29,7 @@ export const CampaignList = ({ campaigns, onOpenModal }) => {
 							<tr key={index}>
 								<td data-label="Name">{c.name}</td>
 								<td data-label="Keywords">{c.keywords.join(", ")}</td>
-								<td data-label="Bid">{c.bid}</td>
-								<td data-label="Fund">{c.fund} E</td>
+								<td data-label="Bid">{c.bid} E</td>
 								<td data-label="Radius">{c.radius} km</td>
 								<td data-label="Status">{c.status}</td>
 							</tr>

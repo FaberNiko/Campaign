@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { KeywordSelect } from "./KeywordSelect";
 import "../styles/CampaignForm.scss";
 
-export const CampaignForm = ({ onAdd, onCloseModal }) => {
+export const CampaignForm = ({ onAdd, onCloseModal, activeFund }) => {
 	const [keywords, setKeywords] = useState([]);
 	const [bid, setBid] = useState("");
 	const [fund, setFund] = useState("");
@@ -54,6 +54,7 @@ export const CampaignForm = ({ onAdd, onCloseModal }) => {
 				<input
 					type="number"
 					min="0.1"
+					max={activeFund}
 					step="any"
 					value={bid}
 					onChange={e => setBid(e.target.value)}
@@ -63,8 +64,7 @@ export const CampaignForm = ({ onAdd, onCloseModal }) => {
 				<label>Campaign fund</label>
 				<input
 					type="number"
-					value={fund}
-					onChange={e => setFund(e.target.value)}
+					value={activeFund}
 					required
 				/>
 
