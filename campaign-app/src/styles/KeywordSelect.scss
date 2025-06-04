@@ -12,7 +12,8 @@
 		border: 1px solid #ccc;
 		border-radius: 6px;
 		font-size: 1rem;
-		background-color: #a7a7a7;
+		background-color: #cfcfcf;
+		color: #4e4e4e;
 		transition: border-color 0.2s ease;
 
 		&:focus {
@@ -67,6 +68,19 @@
 				font-size: 1rem;
 				color: #fff;
 			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.keyword-select {
+		width: 100%;
+		
+
+		.suggestions {
+			display: flex;
+			gap: 0.3rem;
+			border: none;
 		}
 	}
 }

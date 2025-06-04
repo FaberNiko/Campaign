@@ -6,12 +6,16 @@
 
 body {
 	display: flex;
-    justify-content: center;
-	margin: 0;
-	padding: 0;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #f4f4f4;
 	color: #636262;
+}
+
+p {
+	color: #aaa;
 }
 
 h1 {
@@ -27,19 +31,43 @@ h1 {
 }
 
 .modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .modal {
-  background: transparent;
-  backdrop-filter: blur(3px);
-  padding: 1rem;
-  max-width: 600px;
+	background: transparent;
+	backdrop-filter: blur(3px);
+	padding: 1rem;
+	max-width: 600px;
 }
 
+@media (min-width: 768px) {
+	body {
+		display: block;
+	}
 
+	.content {
+		text-align: left;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		
+		h1 {
+			text-align: left;
+			font-size: 4rem;
+		}
+
+		p {
+			text-align: left;
+			font-size: 1.2rem;
+		}
+	}
+
+	.modal {
+		width: 100%;
+	}
+}

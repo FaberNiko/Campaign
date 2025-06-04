@@ -34,10 +34,10 @@ export const CampaignList = ({ campaigns, onOpenModal, onDelete, onEdit }) => {
 								<td data-label="Bid">{c.bid} E</td>
 								<td data-label="Radius">{c.radius} km</td>
 								<td data-label="Status">{c.status}</td>
-								<div className="buttonsBox">
+								<td className="buttonsBox">
 									<button className="editBtn" onClick={() => onEdit(index)}>Edit</button>
 									<button className="deleteBtn" onClick={() => onDelete(index)}>Delete</button>
-								</div>
+								</td>
 							</tr>
 						))
 					)}
